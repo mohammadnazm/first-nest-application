@@ -9,3 +9,7 @@ nest generate controller modules/abc --dry-run
 // Generate a Service with the Nest CLI
 nest generate service {name}
 // shorthand: nest g s {name}
+
+// Generate a Nest Module with the Nest CLI
+nest g module {name}
+// shorthand: nest g mo {name}
