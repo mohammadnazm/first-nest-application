@@ -13,3 +13,9 @@ nest generate service {name}
 // Generate a Nest Module with the Nest CLI
 nest g module {name}
 // shorthand: nest g mo {name}
+
+/**
+ * Generate a DTO class with the Nest CLI 
+ * --no-spec (no test file needed for DTO's)
+ */
+nest g class coffees/dto/create-coffee.dto --no-spec
