@@ -5,3 +5,7 @@ $ nest generate controller
 
 // to see the path use --dry-run
 nest generate controller modules/abc --dry-run
+
+// Generate a Service with the Nest CLI
+nest generate service {name}
+// shorthand: nest g s {name}
