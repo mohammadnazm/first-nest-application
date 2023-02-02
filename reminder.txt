@@ -1,0 +1,7 @@
+// Generate a Controller
+$ nest generate controller
+// shorthand: $ nest g co
+
+
+// to see the path use --dry-run
+nest generate controller modules/abc --dry-run
