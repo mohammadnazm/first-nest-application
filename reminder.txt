@@ -19,3 +19,7 @@ nest g module {name}
  * --no-spec (no test file needed for DTO's)
  */
 nest g class coffees/dto/create-coffee.dto --no-spec
+
+
+/* Generate Entity Class */
+nest g class coffees/entities/flavor.entity --no-spec
