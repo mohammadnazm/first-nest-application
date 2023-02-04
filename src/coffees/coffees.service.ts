@@ -5,6 +5,7 @@ import { CreateCoffeeDto } from './dto/create-coffee.dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto/update-coffee.dto';
 import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
+import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 
 @Injectable()
 export class CoffeesService {
@@ -15,17 +16,20 @@ export class CoffeesService {
     private readonly flavorRepository: Repository<Flavor>,
   ) {}
 
-  findAll() {
+  findAll(paginationQuery: PaginationQueryDto) {
+    const { limit, offset } = paginationQuery;
     return this.coffeeRepository.find({
       relations: {
         flavors: true,
       },
+      skip: offset,
+      take: limit,
     });
   }
 
   async findOne(id: string) {
     const coffee = await this.coffeeRepository.findOne({
-      where: { 
+      where: {
         id: +id,
       },
       relations: {
@@ -41,7 +45,7 @@ export class CoffeesService {
 
   async create(createCoffeeDto: CreateCoffeeDto) {
     const flavors = await Promise.all(
-      createCoffeeDto.flavors.map(name => this.preloadFlavorByName(name)),
+      createCoffeeDto.flavors.map((name) => this.preloadFlavorByName(name)),
     );
 
     const coffee = this.coffeeRepository.create({
@@ -55,7 +59,7 @@ export class CoffeesService {
     const flavors =
       updateCoffeeDto.flavors &&
       (await Promise.all(
-        updateCoffeeDto.flavors.map(name => this.preloadFlavorByName(name)),
+        updateCoffeeDto.flavors.map((name) => this.preloadFlavorByName(name)),
       ));
 
     const coffee = await this.coffeeRepository.preload({
@@ -75,7 +79,9 @@ export class CoffeesService {
   }
 
   private async preloadFlavorByName(name: string): Promise<Flavor> {
-    const existingFlavor = await this.flavorRepository.findOne({ where: { name } }); // 👈 notice the "where"
+    const existingFlavor = await this.flavorRepository.findOne({
+      where: { name },
+    }); // 👈 notice the "where"
     if (existingFlavor) {
       return existingFlavor;
     }
