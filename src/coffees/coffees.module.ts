@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, Scope } from '@nestjs/common';
 import { CoffeesController } from './coffees.controller';
 import { CoffeesService } from './coffees.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -8,6 +8,7 @@ import { Event } from 'src/events/entities/event.entity';
 import { COFFEE_BRANDS } from './coffees.constants';
 import { Injectable } from '@nestjs/common/decorators';
 import { Connection } from 'typeorm';
+import { CoffeeRatingService } from 'src/coffee-rating/coffee-rating.service';
 
 class ConfigService {}
 class DevelopmentConfigService {}
@@ -34,6 +35,7 @@ export class CoffeeBrandsFactory {
         return coffeeBrands;
       },
       inject: [Connection],
+      scope: Scope.TRANSIENT,
     },
   ],
   exports: [CoffeesService],
