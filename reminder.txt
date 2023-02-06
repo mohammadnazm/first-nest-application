@@ -50,4 +50,10 @@ npx typeorm migration:revert -d dist/typeorm-cli.config
 // Let TypeOrm generate migrations (for you)
 npx typeorm migration:generate src/migrations/SchemaSync -d dist/typeorm-cli.config
 
+// Nest CLI - Generate a new CoffeeRatingModule
+nest g mo coffee-rating
+
+// Nest CLI - Generate a new CoffeeRatingService 
+nest g s coffee-rating
+
 
