@@ -59,4 +59,7 @@ nest g s coffee-rating
 // Generate a DatabaseModule
 nest g mo database
 
+// Install @nestjs/config
+npm i @nestjs/config
+
 
