@@ -11,7 +11,10 @@ import { DatabaseModule } from './database/database.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      validationSchema: Joi.object(),
+      validationSchema: Joi.object({
+        DATABASE_HOST: Joi.required(),
+        DATABASE_PORT: Joi.number().default(5432),
+      }),
     }),
     CoffeesModule,
     TypeOrmModule.forRoot({
