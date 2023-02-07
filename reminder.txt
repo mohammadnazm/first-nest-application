@@ -64,4 +64,8 @@ npm i @nestjs/config
 // Generate Filter with Nest CLI 
 nest g filter common/filters/http-exception
 
+// Generate ApiKeyGuard with Nest CLI
+nest g guard common/guards/api-key
+
+
 
