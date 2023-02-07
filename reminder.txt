@@ -2,7 +2,6 @@
 $ nest generate controller
 // shorthand: $ nest g co
 
-
 // to see the path use --dry-run
 nest generate controller modules/abc --dry-run
 
@@ -61,5 +60,8 @@ nest g mo database
 
 // Install @nestjs/config
 npm i @nestjs/config
+
+// Generate Filter with Nest CLI 
+nest g filter common/filters/http-exception
 
 
