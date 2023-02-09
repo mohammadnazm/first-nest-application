@@ -2,7 +2,7 @@ import { IsString } from 'class-validator';
 
 export class CreateCoffeeDto {
   @IsString()
-  readonly name: string;
+  readonly title: string;
 
   @IsString()
   readonly brand: string;

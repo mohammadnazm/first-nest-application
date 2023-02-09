@@ -8,7 +8,6 @@ import {
   Patch,
   Post,
   Query,
-  SetMetadata,
   ValidationPipe,
 } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
@@ -28,8 +27,9 @@ export class CoffeesController {
 
   @Public()
   @Get()
-  findAll(@Query() paginationQuery: PaginationQueryDto) {
+  async findAll(@Query() paginationQuery: PaginationQueryDto) {
     // const { limit, offset } = paginationQuery;
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     return this.coffeesService.findAll(paginationQuery);
   }
 
@@ -38,6 +38,7 @@ export class CoffeesController {
     return this.coffeesService.findOne(id);
   }
 
+  @Public()
   @Post()
   create(@Body() createCoffeeDto: CreateCoffeeDto) {
     return this.coffeesService.create(createCoffeeDto);
