@@ -17,6 +17,7 @@ import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { REQUEST } from '@nestjs/core';
 import { Request } from 'express';
 import { Public } from 'src/common/decorators/public.decorator';
+import { ParseIntPipe } from 'src/common/pipes/parse-int/parse-int.pipe';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -33,9 +34,10 @@ export class CoffeesController {
     return this.coffeesService.findAll(paginationQuery);
   }
 
+  @Public()
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.coffeesService.findOne(id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.coffeesService.findOne('' + id);
   }
 
   @Public()
