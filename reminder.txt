@@ -79,6 +79,10 @@ nest g interceptor common/interceptors/timeout
 // Generate ParseIntPipe with Nest CLI
 nest g pipe common/pipes/parse-int
 
+// Generate LoggingMiddleware with Nest CLI
+nest g middleware common/middleware/logging
+
+
 
 
 
