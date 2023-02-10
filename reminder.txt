@@ -80,7 +80,7 @@ nest g interceptor common/interceptors/timeout
 nest g pipe common/pipes/parse-int
 
 // Generate LoggingMiddleware with Nest CLI
-nest g middleware common/middleware/logging
+// nest g middleware common/middleware/logging
 
 
 
