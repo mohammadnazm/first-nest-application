@@ -13,7 +13,6 @@ import appConfig from './config/app.config';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
-      // 👈
       useFactory: () => ({
         type: 'postgres',
         host: process.env.DATABASE_HOST,
