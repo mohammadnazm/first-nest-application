@@ -82,6 +82,15 @@ nest g pipe common/pipes/parse-int
 // Generate LoggingMiddleware with Nest CLI
 nest g middleware common/middleware/logging
 
+// Generate LoggingMiddleware with Nest CLI
+nest g middleware common/middleware/logging
+
+// Apply LoggingMiddleware in our AppModule 
+consumer
+  .apply(LoggingMiddleware)
+  .forRoutes(‘*’);
+
+
 
 
 
